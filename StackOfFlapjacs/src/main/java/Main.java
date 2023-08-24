@@ -16,23 +16,14 @@ public class Main {
             System.err.println("Input: " + pancakes);
             ArrayList<Integer> flipIndexes = new ArrayList<>();
             for (int offset = 0; offset < pancakes.size(); offset++) {
-                int maxIndex = 0;
                 int end = pancakes.size() - offset - 1;
-                for (int i = 0; i <= end; i++) {
-                    if (pancakes.get(i) > pancakes.get(maxIndex)) {
-                        maxIndex = i;
-                    }
-                }
+                int maxIndex = getMaxIndex(pancakes, end);
                 if (maxIndex < end) {
                     System.err.println("maxIndex: " + maxIndex);
                     if(maxIndex > 0){
-                        flipPancackes(pancakes, maxIndex);
-                        flipIndexes.add(pancakes.size() - maxIndex);
-                        System.err.println("Post flip: " + pancakes);
+                        flipAndAddIndex(pancakes, flipIndexes, maxIndex);
                     }
-                    flipPancackes(pancakes, end);
-                    flipIndexes.add(pancakes.size() - end);
-                    System.err.println("Post flip: " + pancakes);
+                    flipAndAddIndex(pancakes, flipIndexes, end);
                 }
             }
             for (Integer i : flipIndexes) {
@@ -40,6 +31,22 @@ public class Main {
             }
             System.out.println(0);
         }
+    }
+
+    private static void flipAndAddIndex(ArrayList<Integer> pancakes, ArrayList<Integer> flipIndexes, int maxIndex) {
+        flipPancackes(pancakes, maxIndex);
+        flipIndexes.add(pancakes.size() - maxIndex);
+        System.err.println("Post flip: " + pancakes);
+    }
+
+    private static int getMaxIndex(ArrayList<Integer> pancakes, int end) {
+        int maxIndex = 0;
+        for (int i = 0; i <= end; i++) {
+            if (pancakes.get(i) > pancakes.get(maxIndex)) {
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
     }
 
     private static void flipPancackes(ArrayList<Integer> pancakes, int end) {
