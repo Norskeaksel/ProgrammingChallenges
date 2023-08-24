@@ -9,8 +9,8 @@ public class Main {
             String line = sc.nextLine();
             String[] numbers = line.split(" ");
             ArrayList<Integer> pancakes = new ArrayList<>();
-            for (int i = 0; i < numbers.length; i++) {
-                pancakes.add(Integer.parseInt(numbers[i]));
+            for (String number : numbers) {
+                pancakes.add(Integer.parseInt(number));
             }
             System.out.println(line);
             System.err.println("Input: " + pancakes);
