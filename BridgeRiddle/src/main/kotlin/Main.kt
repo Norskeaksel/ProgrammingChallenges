@@ -1,7 +1,7 @@
 import java.util.*
 import kotlin.math.max
 
-typealias State = Pair<List<Int>, List<Int>>
+// typealias State = Pair<List<Int>, List<Int>>
 
 typealias Answer = Pair<Int, List<Int>>
 
@@ -13,8 +13,8 @@ fun bruteForce(
     time: Int = 0,
     moves: List<Int> = emptyList(),
 ): Answer {
-    val cacheKey = people to crossedPeople
-    /*if (cacheKey in memoizationCache) {
+    /*val cacheKey = people to crossedPeople
+    if (cacheKey in memoizationCache) {
         return memoizationCache[cacheKey]!!
     }*/
 
@@ -72,9 +72,9 @@ fun allPairs(n: Int): MutableList<Pair<Int, Int>> {
 
 /*fun allPairs(n: Int) = (0 until n - 1).flatMap { i -> (i + 1 until n).map { j -> i to j } }*/
 
-fun bestMoves(people: List<Int>, crossedPeople: List<Int>): Pair<Int, List<Int>> {
-    val answer1 = option1(people, crossedPeople)
-    val answer2 = option2(people, crossedPeople)
+fun bestMoves(fastest: Int, fast: Int, slow: Int, slowest: Int): Pair<Int, List<Int>> {
+    val answer1 = option1(fastest, slow, slowest)
+    val answer2 = option2(fastest, fast, slow, slowest)
     if (answer1.first <= answer2.first) {
         return answer1
     } else {
@@ -82,62 +82,44 @@ fun bestMoves(people: List<Int>, crossedPeople: List<Int>): Pair<Int, List<Int>>
     }
 }
 
-fun option1(people3: List<Int>, crossedPeople: List<Int>): Pair<Int, List<Int>> {
-    assert(people3.size == 3)
-    val p0 = people3[0]
-    val p1 = people3[1]
-    val crossingPeople = listOf(p0, p1)
-    var time = max(p0, p1)
-    val newCrossedPeople = crossedPeople.toMutableList()
-    newCrossedPeople.addAll(crossingPeople)
-    newCrossedPeople.sort()
-    val personGoingBack = newCrossedPeople[0]
-    time += personGoingBack
-    time += max(people3[2], personGoingBack)
-    val moves = listOf(p0, p1, personGoingBack)
+fun option1(fastest: Int, slow: Int, slowest: Int): Pair<Int, List<Int>> {
+    val moves = listOf(fastest, fastest, slow, fastest, fastest, slowest)
+    val time = fastest + slow + fastest + slowest
     return Pair(time, moves)
 }
 
-fun option2(people3: List<Int>, crossedPeople: List<Int>): Pair<Int, List<Int>> {
-    assert(people3.size == 3)
-    val p1 = people3[1]
-    val p2 = people3[2]
-    var time = max(p1, p2)
-    val crossingPeople = listOf(p1, p2)
-    val newCrossedPeople = crossedPeople.toMutableList()
-    newCrossedPeople.addAll(crossingPeople)
-    newCrossedPeople.sort()
-    val personGoingBack = newCrossedPeople[0]
-    time += personGoingBack
-    time += max(people3[0], personGoingBack)
-    val moves = listOf(p1, p2, personGoingBack)
+fun option2(fastest: Int, fast: Int, slow: Int, slowest: Int): Pair<Int, List<Int>> {
+    val moves = listOf(fastest, slow, slowest, fast, fastest, fast)
+    val time = fastest + slowest + fast + fast
     return Pair(time, moves)
 }
 
 fun solve(people: List<Int>): Answer {
-    val moves = mutableListOf<Int>()
-    val crossedPeople = mutableListOf<Int>()
-    val remainingPeople = people.toMutableList()
-    var time = 0
-    while (remainingPeople.size >= 3) {
-        val subArray = remainingPeople.slice(0..2)
-        val answer = bestMoves(subArray, crossedPeople)
-        val newMoves = answer.second.slice(0..2)
-        val crossingPeople = answer.second.slice(0..1)
-        time += crossingPeople.max()
-        crossedPeople.addAll(crossingPeople)
-        for (person in crossingPeople) {
-            remainingPeople.remove(person)
-        }
-        val returningPerson = answer.second[2]
-        time += returningPerson
-        crossedPeople.remove(returningPerson)
-        remainingPeople.add(returningPerson)
-        remainingPeople.sort()
-        moves.addAll(newMoves)
+    if (people.size == 1) {
+        return Pair(people[0], listOf(people[0]))
     }
-    moves.addAll(remainingPeople)
-    time += remainingPeople.max()
+    val fastest = people[0]
+    val fast = people[1]
+    val moves = mutableListOf(fastest, fast)
+    var time = fast
+    val remainingPeople = people.toMutableList()
+    remainingPeople.remove(fastest)
+    remainingPeople.remove(fast)
+    while (remainingPeople.size >= 2) {
+        val slow = remainingPeople[remainingPeople.size - 2]
+        val slowest = remainingPeople[remainingPeople.size - 1]
+        val answer = bestMoves(fastest, fast, slow, slowest)
+        time += answer.first
+        val newMoves = answer.second
+        moves.addAll(newMoves)
+        remainingPeople.remove(slow)
+        remainingPeople.remove(slowest)
+    }
+    if (remainingPeople.size == 1) {
+        val remainingDude = remainingPeople[0]
+        time += fastest + remainingDude
+        moves.addAll(listOf(fastest, fastest, remainingDude))
+    }
     return Pair(time, moves)
 }
 

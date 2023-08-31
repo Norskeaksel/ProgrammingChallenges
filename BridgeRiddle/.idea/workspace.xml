@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be029a32-5749-4a26-aa04-d4454bc416c1" name="Changes" comment="Pre change to scanner">
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/MainKtTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/generateSortedRandomIntegers.kt" afterDir="false" />
+    <list default="true" id="be029a32-5749-4a26-aa04-d4454bc416c1" name="Changes" comment="Wrong answer">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/MainKtTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/MainKtTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/generateSortedRandomIntegers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/generateSortedRandomIntegers.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -56,26 +58,15 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.MainKt">
+  <component name="RunManager" selected="JUnit.MainKtTest (1)">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="BridgeRiddle" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainKtTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BridgeRiddle" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainKtTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainKtTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BridgeRiddle" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainKtTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainKtTest (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BridgeRiddle" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MainKtTest" />
@@ -93,6 +84,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainKtTest.testJavaCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BridgeRiddle" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainKtTest" />
+      <option name="METHOD_NAME" value="testJavaCode" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainKt" />
       <module name="BridgeRiddle" />
@@ -102,11 +103,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.MainKt" />
         <item itemvalue="JUnit.MainKtTest (1)" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MainKtTest.testJavaCode" />
+        <item itemvalue="Kotlin.MainKt" />
         <item itemvalue="JUnit.MainKtTest (4)" />
-        <item itemvalue="JUnit.MainKtTest (3)" />
-        <item itemvalue="JUnit.MainKtTest (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -131,7 +132,13 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1693044632481</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Wrong answer">
+      <created>1693514072702</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1693514072702</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,15 +156,21 @@
     <MESSAGE value="Will transition from working priority queue" />
     <MESSAGE value="Ok solution" />
     <MESSAGE value="Pre change to scanner" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pre change to scanner" />
+    <MESSAGE value="Wrong answer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wrong answer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/Main.kt</url>
-          <line>136</line>
-          <option name="timeStamp" value="16" />
+          <line>117</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Main.kt</url>
+          <line>108</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -3,8 +3,8 @@ import kotlin.random.nextInt
 
 fun generateSortedRandomIntegers(): List<Int> {
     val random = Random(System.currentTimeMillis())
-    val listSize = random.nextInt(1, 6)
-    val range = 1..10
+    val listSize = random.nextInt(1, 7)
+    val range = 0..100
 
     return (1..listSize).map { _ -> random.nextInt(range) }
         .sorted()
